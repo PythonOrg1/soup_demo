@@ -103,7 +103,7 @@ def getImgRankToJson(pageStart: int, pageEnd: int):
         # 页面内容html
         html = download_page(url)
         # 爬虫结果json数组
-        list = get_content(html, p)
+        list = get_content(html)
 
         result_p.setdefault('currentPage', p)
         print('-----p.setpage' + str(p))
