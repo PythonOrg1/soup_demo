@@ -36,7 +36,15 @@ class QuotesSpider(scrapy.Spider):
                 'tags': quote.css('div.tags a.tag::text').getall()
             }
             # self.log(' ---> quote : %s' % )
-        #
-        # next_page = response.css('li.next a::attr("href")').get()
-        # if next_page is not None:
-        #     yield response.follow(next_page, self.parse)
+
+        # 获取 元素链接 及此处的下一页内容
+        next_page = response.css('li.next a::attr("href")').get()
+        # self.log('--->quote nextpage = %s' % next_page)
+        if next_page is not None:
+            # 使用该urljoin()方法构建完整的绝对URL （因为链接可以是相对的）并向下一页生成新请求，
+            next_page = response.urljoin(next_page)
+            # self.log('--->quote nextpage = %s' % next_page)
+
+            # 继续回调请求下一页的数据
+            yield scrapy.Request(url=next_page, callback=self.parse)
+            # yield response.follow(next_page, self.parse)

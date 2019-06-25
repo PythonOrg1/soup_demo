@@ -31,15 +31,23 @@
 https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors
 
     1。css （实际上scrapy底层还是将其转化为后者xpath）
-    获取元素：   response.css('title')
-    获取元素文字内容：response.css('title::text').get()
+        获取元素：   response.css('title')
+        获取元素文字内容：response.css('title::text').get()
         
     2。xpath    
-    获取元素：   response.xpath('//title')
-    获取元素文字内容：response.xpath('//title/text()').get()
+        获取元素：   response.xpath('//title')
+        获取元素文字内容：response.xpath('//title/text()').get()
+        
+        get()        获取单个元素内容(string)
+        getall()     获取所有的(array)
+        re(r'Quotes.*') 正则匹配(array)
     
-    get()        获取单个元素内容(string)
-    getall()     获取所有的(array)
-    re(r'Quotes.*') 正则匹配(array)
+    3.获取属性元素
+        ::attr(xxx)
+        eg: res.css('div.next a::attr(href)').get()
+        
+        attrib['xxx']
+        eg: res.css('div.next a').attrib['href']
+    
     
     
