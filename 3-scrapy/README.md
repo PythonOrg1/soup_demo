@@ -8,6 +8,16 @@
 
     #pip install scrapy
 
+命令行创建工程：
+
+    scrapy startproject <project_name> [project_dir]
+    #scrapy startproject myproject dir
+    会在 'dir' 目录（如果没有，则会自动创建一个跟'myproject'同名的目录）下，生成固定格式和目录结构的项目，例如此处的 auto_cmd_project 项目;
+
+    创建一个Spider(统一目pj下可以创建多个spider)：
+    scrapy genspider [-t template] <name> <domain>
+    #scrapy genspider spname domain.com
+
 运行：
     
     #scrapy runspider xxx.py
